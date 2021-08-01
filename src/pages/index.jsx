@@ -9,11 +9,13 @@ export default function Home() {
 	const [count, setCount] = useState(1);
 	const [text, setText] = useState("");
 	const [isShow, setIsShow] = useState(true);
+	const [array, setArray] = useState([]);
 
 	const handleClick = useCallback(() => {
 		if (count < 10) {
-			setCount((count) => count + 1);
+			setCount((prevCount) => prevCount + 1);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleChange = useCallback((e) => {
@@ -34,9 +36,15 @@ export default function Home() {
 	}, []);
 
 	const handleDisplay = useCallback(() => {
-		setIsShow((isShow) => !isShow);
+		setIsShow((prevIsShow) => !prevIsShow);
 	}, []);
 
+	const handleAdd = useCallback(() => {
+		setArray((prevArray) => {
+			const newArray = [...prevArray, 1];
+			return newArray;
+		});
+	}, []);
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -47,6 +55,12 @@ export default function Home() {
 			<button onClick={handleClick}>ボタン</button>
 			<button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
 			<input type='text' value={text} onChange={handleChange} />
+			<button onClick={handleAdd}>追加</button>
+			<ul>
+				{array.map((item) => {
+					return <li key={item}>{item}</li>;
+				})}
+			</ul>
 			<Main page='index' />
 			<Footer />
 		</div>

@@ -6,6 +6,7 @@ import { Main } from "src/components/Main";
 import { useCounter } from "src/hooks/useCounter";
 import { useInputArray } from "src/hooks/useInputArray";
 import { useBgLightBlue } from "src/hooks/useBgLightBlue";
+/* eslint-disable jsx-a11y/anchor-is-valid */
 
 export default function About() {
 	const { count, isShow, handleClick, handleDisplay } = useCounter();

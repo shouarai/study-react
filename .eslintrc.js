@@ -24,7 +24,11 @@ module.exports = {
 		"react/jsx-props-no-spreading": "off",
 		"jsx-a11y/anchor-is-valid": [
 			"error",
-			{ components: ["Link"], specialLink: ["to"] },
+			{
+				components: ["Link"],
+				specialLink: ["hrefLeft", "hrefRight"],
+				aspects: ["invalidHref", "preferButton"],
+			},
 		],
 	},
 	settings: {
